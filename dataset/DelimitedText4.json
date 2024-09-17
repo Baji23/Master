@@ -1,0 +1,26 @@
+{
+	"name": "DelimitedText4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('monthrevenuefiles',adddays(startofmonth(utcNow()),-1,'ddMMMyyyy'),'_ending',formatDateTime(utcNow(),'ddMMMyyyy'),'.csv')",
+					"type": "Expression"
+				},
+				"fileSystem": "testingadls"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
