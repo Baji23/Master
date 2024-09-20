@@ -23,7 +23,8 @@
 					"dataset": {
 						"referenceName": "AzureSqlTable4",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": true
 				}
 			},
 			{
@@ -141,14 +142,14 @@
 					"storedProcedureParameters": {
 						"Lastmodifiedtime": {
 							"value": {
-								"value": "@{activity('LkpNewwatermark').output.firstRow.Newwatermarkvalue}",
+								"value": "@activity('LkpNewwatermark').output.firstRow.Newwatermarkvalue",
 								"type": "Expression"
 							},
 							"type": "Datetime"
 						},
 						"tablename": {
 							"value": {
-								"value": "@{activity('LkpOldwatermark').output.firstRow.tablename}",
+								"value": "@activity('LkpOldwatermark').output.firstRow.tablename",
 								"type": "Expression"
 							},
 							"type": "String"
