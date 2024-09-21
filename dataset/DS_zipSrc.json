@@ -1,0 +1,20 @@
+{
+	"name": "DS_zipSrc",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_HTTPRest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "adlsinput/1mb.zip?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupyx&se=2024-09-21T14:01:07Z&st=2024-09-21T06:01:07Z&spr=https&sig=C%2F0Z9lOWVVxNFaU%2FLXguu758O4oUHxBYrvkksRnajNo%3D"
+			},
+			"compression": {
+				"type": "ZipDeflate"
+			}
+		}
+	}
+}
