@@ -1,0 +1,12 @@
+{
+	"name": "LS_HTTPRest",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://adlsstorage134.blob.core.windows.net/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
 		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
 		"AzureSqlDatabase1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
@@ -22,6 +26,10 @@
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsstorage134.dfs.core.windows.net/"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0919-182900-oxcoamga"
 		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"type": "string",
@@ -35,17 +43,21 @@
 			"type": "string",
 			"defaultValue": "sqlserver"
 		},
+		"LS_HTTPRest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsstorage134.blob.core.windows.net/"
+		},
 		"linkedservice_sql_properties_typeProperties_server": {
 			"type": "string",
-			"defaultValue": "sqlpractise134.database.windows.net"
+			"defaultValue": "BAJIVASSU\\SQLEXPRESS"
 		},
 		"linkedservice_sql_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "@{linkedService().dbname}"
+			"defaultValue": "testdb"
 		},
 		"linkedservice_sql_properties_typeProperties_userName": {
 			"type": "string",
-			"defaultValue": "Sqldatabase"
+			"defaultValue": "Bajivassu\\purna"
 		},
 		"containerUri": {
 			"type": "string",
@@ -77,14 +89,17 @@
 					"AzureDataLakeStorage1_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
 					},
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
 					"AzureSqlDatabase1_password": {
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					},
-					"linkedservice_sql_password": {
-						"value": "[parameters('linkedservice_sql_password')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
 					},
 					"AzureSqlDatabase1_properties_typeProperties_server": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
@@ -94,6 +109,30 @@
 					},
 					"AzureSqlDatabase1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"LS_HTTPRest_properties_typeProperties_url": {
+						"value": "[parameters('LS_HTTPRest_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "Practiseadf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"linkedservice_sql_password": {
+						"value": "[parameters('linkedservice_sql_password')]"
 					},
 					"linkedservice_sql_properties_typeProperties_server": {
 						"value": "[parameters('linkedservice_sql_properties_typeProperties_server')]"
@@ -106,7 +145,9 @@
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'Practiseadf_ArmTemplate_0')]"
+			]
 		}
 	]
 }

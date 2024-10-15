@@ -8,6 +8,9 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
@@ -16,6 +19,9 @@
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://adlsstorage134.dfs.core.windows.net/"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0919-182900-oxcoamga"
 		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"value": "sqlpractise134.database.windows.net"
@@ -26,14 +32,17 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "sqlserver"
 		},
+		"LS_HTTPRest_properties_typeProperties_url": {
+			"value": "https://adlsstorage134.blob.core.windows.net/"
+		},
 		"linkedservice_sql_properties_typeProperties_server": {
-			"value": "sqlpractise134.database.windows.net"
+			"value": "BAJIVASSU\\SQLEXPRESS"
 		},
 		"linkedservice_sql_properties_typeProperties_database": {
-			"value": "@{linkedService().dbname}"
+			"value": "testdb"
 		},
 		"linkedservice_sql_properties_typeProperties_userName": {
-			"value": "Sqldatabase"
+			"value": "Bajivassu\\purna"
 		}
 	}
 }
